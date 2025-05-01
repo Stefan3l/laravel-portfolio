@@ -16,6 +16,7 @@
                     <th scope="col">Nome Cliente</th>
                     <th scope="col">Periodo</th>
                     <th></th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -26,10 +27,14 @@
                         <td>{{ $project->periodo }}</td>
                         <td> 
                             <a href="{{ route('projects.show', $project->id) }}" class="btn btn-primary">Dettagli</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        <div class="d-flex justify-content-center mt-4">
+            <a href="{{ route('projects.create') }}" class="btn btn-success">Crea Nuovo Progetto</a>
+        </div>
     </div>
 </div>
 @endsection
