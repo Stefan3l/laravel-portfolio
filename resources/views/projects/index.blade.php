@@ -15,6 +15,7 @@
                     <th scope="col">Nome Progetto</th>
                     <th scope="col">Nome Cliente</th>
                     <th scope="col">Periodo</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +24,8 @@
                         <td>{{ $project->name }}</td>
                         <td>{{ $project->nome_cliente }}</td>
                         <td>{{ $project->periodo }}</td>
+                        <td> 
+                            <a href="{{ route('projects.show', $project->id) }}" class="btn btn-primary">Dettagli</a>
                     </tr>
                 @endforeach
             </tbody>
