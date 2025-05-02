@@ -58,7 +58,7 @@ class ProjectController extends Controller
         //altri metodi per recuperare l'id
         // $project = Project::find($id);
         // $project = Project::where('id', $id)->first();
-
+        
 
         return view ('projects.show', compact('project'));
     }

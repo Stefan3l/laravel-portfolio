@@ -4,6 +4,8 @@
     <h1 class="text-center py-5">Project Details</h1>
 @endsection
 
+
+
 @section('content')
     <div class="container">
         <div class="pb-2 pt-5"> 
@@ -11,11 +13,17 @@
         </div>
         <div class="card shadow-sm">
             <div class="card-body">
-                <div class="mb-4"> 
-                    <h2 class="card-title text-primary mb-3">{{ $project->name }}</h2>
-                    <div class="card-text">
-                        <p class="mb-2"><i class="fas fa-user me-2"></i><strong>Nome Cliente:</strong> {{ $project->nome_cliente }}</p>
-                        <p class="mb-3"><i class="fas fa-calendar me-2"></i><strong>Periodo:</strong> {{ $project->periodo }}</p>
+                <div class="mb-4 d-flex justify-content-between "> 
+                    <div>
+                        <h2 class="card-title text-primary mb-3">{{ $project->name }}</h2>
+                        <div class="card-text">
+                            <p class="mb-2"><i class="fas fa-user me-2"></i><strong>Nome Cliente:</strong> {{ $project->nome_cliente }}</p>
+                            <p class="mb-3"><i class="fas fa-calendar me-2"></i><strong>Periodo:</strong> {{ $project->periodo }}</p>
+                        </div>
+                    </div>
+                    <div class="text-center px-3"> 
+                        <h2 class="card-title text-primary mb-3">Type</h2>
+                        <p class="fw-bold fs-3">{{ $project->type->nome}}</p>
                     </div>
                 </div>
                 <div class="border-top pt-3">

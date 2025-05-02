@@ -64,7 +64,7 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ url('admin') }}">{{__('Admin')}}</a>
-                                <a class="dropdown-tiem" href="{{url('projects') }}">{{__('Projects')}}</a>
+                                <a class="dropdown-item" href="{{url('projects') }}">{{__('Projects')}}</a>
                                 <a class="dropdown-item" href="{{ url('dashboard') }}">{{__('Dashboard')}}</a>
                                 <a class="dropdown-item" href="{{ url('profile') }}">{{__('Profile')}}</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
