@@ -27,11 +27,20 @@
                     </div>
                 </div>
                 <div> 
-                    <h1 class="fw-bold fs-5 text-center">Tecnologie utilizzate:</h1>
-                        <div> 
+                    
+                        <div class="d-flex flex-wrap justify-content-center mt-3 mb-4"> 
+                                @if($project->technologies->isEmpty())
+                                    <div class="text-center ">
+                                        <p class="text-danger fw-bold fs-4">Nessuna tecnologia selezionata</p>
+                                    @else
+                                        <p class="text-success fw-bold fs-5">Tecnologie selezionate:</p>
+                                    </div>
+                                @endif
+                                <div class="d-flex flex-wrap justify-content-center">
                             @foreach ($project->technologies as $technology)
-                                <span class="badge rounded-pill  me-2 mb-2" style="background-color: {{$technology->colore}}">{{ $technology->nome }}</span>
+                                <span class="badge rounded-pill me-2 mb-2 fw-bold fs-6 " style="background-color: {{$technology->colore}}">{{ $technology->nome }}</span>
                             @endforeach
+                                </div>
                         </div>
                 </div>
                 <div class="border-top pt-3">

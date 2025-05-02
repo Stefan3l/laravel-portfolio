@@ -16,10 +16,10 @@ class TechnologiesTableSeeder extends Seeder
     {
         $technologies = ["internet", "cloud", "server", "database", "api", "web", "mobile", "desktop", "network", "security"];
 
-        foreach ($technologies as $techonlogy) {
+        foreach ($technologies as $technology) {
 
             $newTechnology = new Technology();
-            $newTechnology->nome = $techonlogy;
+            $newTechnology->nome = $technology;
             $newTechnology->colore = $faker->hexColor();
 
             $newTechnology->save();

@@ -47,27 +47,19 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {   
-        //salvo i dati che arrivano dal form
-        $data= $request->all();
-        // dd($data);
-
-        //creo un nuovo progetto
+        $data = $request->all();
+        
         $newProject = New Project();
-        $newProject-> name = $data['name'];
-        $newProject-> nome_cliente = $data['nome_cliente'];
-        $newProject-> periodo = $data['periodo'];
-        $newProject-> riasunto = $data['riasunto'];
-        $newProject-> type_id = $data['type_id'];
+        $newProject->name = $data['name'];
+        $newProject->nome_cliente = $data['nome_cliente'];
+        $newProject->periodo = $data['periodo'];
+        $newProject->riasunto = $data['riasunto'];
+        $newProject->type_id = $data['type_id'];
         $newProject->save();
 
-        //controllo se ci sono tecnologie
         if ($request->has('technologies')) {
-            
-            //associo le tecnologie al progetto
-            $newProject->techonologies()->attach($data['technologies']);
+            $newProject->technologies()->attach($data['technologies']);
         }
-
-       
 
         return redirect()->route('projects.show', $newProject);
     }
