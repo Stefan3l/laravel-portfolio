@@ -33,11 +33,32 @@
                             <a href="{{ route('projects.edit', $project->id) }}" class="btn btn-outline-warning fw-bold">Modifica</a>
                         </td>
                         <td> 
-                            <form action="{{ route('projects.destroy', $project) }}" method="POST">
-                                @csrf
-                                @method("DELETE")
-                                <input type="submit" class="btn btn-outline-danger fw-bold" value="Cancella">
-                            </form>
+                            <button type="button" class="btn btn-outline-danger fw-bold" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ $project->id }}">
+                                Cancella
+                            </button>
+
+                            <!-- Modal per ogni progetto -->
+                            <div class="modal fade" id="deleteModal-{{ $project->id }}" tabindex="-1" aria-labelledby="deleteModalLabel-{{ $project->id }}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel-{{ $project->id }}">Conferma eliminazione</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Sei sicuro di voler eliminare il progetto "{{ $project->name }}"?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annulla</button>
+                                            <form action="{{ route('projects.destroy', $project) }}" method="POST" class="d-inline">
+                                                @csrf
+                                                @method("DELETE")
+                                                <button type="submit" class="btn btn-danger">Conferma eliminazione</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
@@ -48,4 +69,5 @@
         </div>
     </div>
 </div>
+
 @endsection
