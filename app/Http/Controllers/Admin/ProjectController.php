@@ -26,7 +26,16 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        //recupero dati per project
+        $projects = Project::all();
+        
+        //creo un nuovo progetto vuoto per il form
+        $project = new Project();
+
+        //recupero dati per type
+        $types = Type::all();
+
+        return view('projects.create', compact(['projects', 'types', 'project']));
     }
 
     /**
