@@ -29,6 +29,14 @@
                 <input type="date" class="form-control" id="periodo" name="periodo" value="{{ $project->periodo }}" >
             </div>
             <div class="d-fle flex-column gap-1 mb-3">
+                <label for="type_id" class="form-label fw-bold">Seleziona il type</label>
+                <select class="form-select fw-bold text-uppercase" id="type_id" name="type_id">
+                    @foreach ($types as $type)
+                        <option class="fw-bold text-uppercase" value="{{ $type->id }}" {{ $project->type_id == $type->id ? 'selected' : '' }}>{{ $type->nome }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="d-fle flex-column gap-1 mb-3">
                 <label for="riasunto" class="form-label fw-bold">Nome Progetto</label>
                 <textarea type="text" class="form-control" id="riasunto" name="riasunto">{{ $project->riasunto }}</textarea>
             </div>

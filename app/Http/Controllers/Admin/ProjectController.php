@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -43,6 +44,7 @@ class ProjectController extends Controller
         $newProject-> nome_cliente = $data['nome_cliente'];
         $newProject-> periodo = $data['periodo'];
         $newProject-> riasunto = $data['riasunto'];
+        $newProject-> type_id = $data['type_id'];
         $newProject->save();
 
         // dd($newProject);
@@ -67,8 +69,11 @@ class ProjectController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Project $project)
-    {
-        return view ('projects.edit', compact('project'));
+    {   
+        //recupero i dati per type
+        $types = Type::all();
+
+        return view ('projects.edit', compact(['project', 'types']));
     }
 
     /**

@@ -18,7 +18,7 @@ class TypesTableSeeder extends Seeder
 
         foreach ($types as $type) {
             $newType = new Type();
-            $newType->nome = rand(1, 10);
+            $newType->nome = $type;  // Convertito in stringa per sicurezza
             $newType->descrizione = $faker->text(200);
 
             $newType->save();
