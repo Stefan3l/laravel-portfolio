@@ -6,6 +6,7 @@
     <h1 class="text-center py-5">Create a New Project</h1>
 @endsection
 
+
 @section('content')
     
 <div class="container">
@@ -31,6 +32,14 @@
                     <option class="fw-bold text-uppercase" value="{{ $type->id }}" {{ old('type_id', $project->type_id) == $type->id ? 'selected' : '' }}>{{ $type->nome }}</option>
                 @endforeach
             </select>
+        </div>
+        <div class="d-flex flex-wrap  mb-3"> 
+            @foreach ($technologies as $technology)
+                <div class="form-check me-3 mb-2">
+                    <input type="checkbox" class="form-check-input" id="{{ $technology->id }}" name="techonologies[]" value="{{$technology->id}}">
+                    <label class="form-check-label fw-bold text-uppercase" for="{{$technology->id}}">{{ $technology->nome }}</label>
+                </div>
+            @endforeach
         </div>
         <div> 
             <label for="riasunto" class="form-label">Riasunto del Progetto</label>

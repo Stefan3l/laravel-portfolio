@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Technology;
 use App\Models\Type;
 use Illuminate\Http\Request;
 
@@ -35,7 +36,10 @@ class ProjectController extends Controller
         //recupero dati per type
         $types = Type::all();
 
-        return view('projects.create', compact(['projects', 'types', 'project']));
+        //recupero dati per technology
+        $technologies = Technology::all();
+
+        return view('projects.create', compact(['projects', 'types', 'project', 'technologies']));
     }
 
     /**
@@ -56,7 +60,14 @@ class ProjectController extends Controller
         $newProject-> type_id = $data['type_id'];
         $newProject->save();
 
-        // dd($newProject);
+        //controllo se ci sono tecnologie
+        if ($request->has('technologies')) {
+            
+            //associo le tecnologie al progetto
+            $newProject->techonologies()->attach($data['technologies']);
+        }
+
+       
 
         return redirect()->route('projects.show', $newProject);
     }
@@ -82,7 +93,10 @@ class ProjectController extends Controller
         //recupero i dati per type
         $types = Type::all();
 
-        return view ('projects.edit', compact(['project', 'types']));
+        //recupero i dati per technology
+        $technologies = Technology::all();
+
+        return view ('projects.edit', compact(['project', 'types', 'technologies']));
     }
 
     /**
@@ -100,6 +114,15 @@ class ProjectController extends Controller
         $project->riasunto = $data['riasunto'];
 
         $project->update();
+
+        //controllo se ci sono tecnologie
+        if($request->has('technologies')) {
+            //sincronizzo le tecnologie della tabella pivot
+            $project->technologies()->sync($data['technologies']);
+        } else {
+            //se non ci sono technologies, le rimuovo
+            $project->technologies()->detach();
+        }
 
         return redirect()->route('projects.show', $project);
     }

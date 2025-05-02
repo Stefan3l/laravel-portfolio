@@ -36,6 +36,14 @@
                     @endforeach
                 </select>
             </div>
+            <div class="d-flex flex-wrap  mb-3"> 
+                @foreach ($technologies as $technology)
+                    <div class="form-check me-3 mb-2">
+                        <input type="checkbox" class="form-check-input" id="{{ $technology->id }}" name="techonologies[]" value="{{$technology->id}}">
+                        <label class="form-check-label fw-bold text-uppercase" for="{{$technology->id}}">{{ $technology->nome }}</label>
+                    </div>
+                @endforeach
+            </div>
             <div class="d-fle flex-column gap-1 mb-3">
                 <label for="riasunto" class="form-label fw-bold">Nome Progetto</label>
                 <textarea type="text" class="form-control" id="riasunto" name="riasunto">{{ $project->riasunto }}</textarea>

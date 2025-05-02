@@ -26,6 +26,14 @@
                         <p class="fw-bold fs-3">{{ $project->type->nome}}</p>
                     </div>
                 </div>
+                <div> 
+                    <h1 class="fw-bold fs-5 text-center">Tecnologie utilizzate:</h1>
+                        <div> 
+                            @foreach ($project->technologies as $technology)
+                                <span class="badge rounded-pill  me-2 mb-2" style="background-color: {{$technology->colore}}">{{ $technology->nome }}</span>
+                            @endforeach
+                        </div>
+                </div>
                 <div class="border-top pt-3">
                     <h3 class="h5 text-secondary mb-3">Descrizione</h3>
                     <p class="card-text fs-5">{{ $project->riasunto }}</p>
